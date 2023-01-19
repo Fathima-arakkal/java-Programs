@@ -1,0 +1,10 @@
+class Comp
+{
+	int r1;
+	int m;
+	String str;
+	void read()
+	{
+		
+	}
+}
