@@ -1,0 +1,28 @@
+package net; // server pgm
+//ds(1)
+// dp(2)
+//recieve
+
+		System.out.println("Data is sent again - 2 way ");
+		import java.net.*;
+
+public class UDPSer {
+	public static void main(String[] args) throws Exception{
+		byte[] b1 = new byte[2048];
+		DatagramSocket ds = new DatagramSocket(1122);
+		DatagramPacket dp = new DatagramPacket(b1,b1.length);//2 -->data(byte array), length
+		ds.receive(dp);
+		String str = new String(dp.getData());
+		int num = Integer.parseInt(str.trim()) ;
+		num++;
+		System.out.println("The data1 is  " + num);//11
+		
+		
+		byte[] b = (String.valueOf(num)).getBytes();//11
+		InetAddress my = InetAddress.getLocalHost();
+		DatagramPacket dp1 = new DatagramPacket(b, b.length,my, 3115);
+		ds.send(dp1);
+
+		}
+
+}
