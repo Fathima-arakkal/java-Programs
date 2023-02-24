@@ -1,0 +1,28 @@
+import java.net.*;
+
+public class UDPCli {
+
+	public static void main(String[] args) throws Exception{
+		int i = 10;
+		byte[] b = (String.valueOf(i)).getBytes();
+		DatagramSocket ds = new DatagramSocket();
+		InetAddress my = InetAddress.getLocalHost();
+		DatagramPacket dp = new DatagramPacket(b, b.length,my, 1122);
+		ds.send(dp);
+		System.out.println("Data is sent");
+		
+		
+		DatagramSocket ds1 = new DatagramSocket(3115);
+		byte[] b2 = new byte[2048];
+		DatagramPacket dp1 = new DatagramPacket(b2,b2.length);//2 -->data(byte array), length
+		ds1.receive(dp1);
+		System.out.println("Data is received again - 2 way ");
+		String str2 = new String(dp1.getData());
+		int num = Integer.parseInt(str2.trim()) ;
+		int sq= num*num;
+		System.out.println("The data2 is  " + sq); //121
+		
+		
+	}
+
+}
