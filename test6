@@ -1,0 +1,25 @@
+package jdbcpgms;
+import java.sql.*;
+
+public class Test5 {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+try
+{
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+    Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","mca","mca");
+    Statement stmt = con.createStatement();
+    String q="create table test5(tid varchar2(10),tname varchar2(10),tgender varchar2(10),tplace varchar2(10),temailid varchar2(10),tphone varchar2(10))"
+            + "";
+    stmt.executeUpdate(q);
+    System.out.println("Table created");
+    con.close();
+}
+catch(Exception e)
+{
+    System.out.println(e);
+}
+    }
+
+}
